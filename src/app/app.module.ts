@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 import { MoviesModule } from './feature/movies/movies.module';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MoviesModule } from './feature/movies/movies.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MoviesModule
+    MoviesModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
