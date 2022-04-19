@@ -1,0 +1,144 @@
+:host {
+    font-size: 0.8rem;
+}
+
+.header {
+    background-color: #3d2564;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 0 1rem
+}
+
+header ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+header li {
+    list-style: none;
+    margin: .4em;
+    padding: 0 .95em;
+}
+
+
+
+header a {
+    text-decoration: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #c822ff, #a646ff, #8258ff, #5965ff, #1b6dff);
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+}
+
+nav {
+    border-top: 1px solid #00acf4;
+}
+
+nav li:hover {
+    transition: ease-in-out 350ms;
+    border-bottom: 1px solid #00acf4;
+}
+
+
+.logo {
+    font-size: 1.5em;
+    padding-bottom: 0;
+}
+
+.logo-wrap {
+    font-family: Tahoma, sans-serif, cursive;
+    letter-spacing: .5em;
+    margin: 0.5em 0;
+    display: flex;
+}
+
+.logo-wrap p {
+    position: relative;
+    top: 13px;
+    padding-left: 15px;
+    font-size: 1.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #c822ff, #a646ff, #8258ff, #5965ff, #1b6dff);
+    background-clip: text;
+    color: transparent;
+    height: 30px;
+}
+
+
+.logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-wrap a {
+    width: 2.7rem;
+}
+
+.mini-navbar-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+}
+
+
+
+.mini-navbar ul {
+    background-image: linear-gradient(to right bottom, #41276a, #4d267e, #5a2492, #691ea6, #790fb9);
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #00d4ff;
+    padding-left: 0;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+
+.mini-navbar ul li a:hover {
+
+    transition: ease-in-out 250ms;
+    text-shadow: 1.5px 1.5px 5px #6fd3fa;
+    
+}
+
+
+.mini-navbar ul li+li {
+    border-left: 1px solid lightgrey;
+    padding-left: .8em;
+
+}
+
+
+/* 
+.notification {
+    position: fixed;
+    z-index: 10;
+    right: 8%;
+    top: 8%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    text-decoration: underline;
+    box-shadow: 0 5px 10px rgb(204, 204, 204);
+    background-color: rgba(238, 74, 74, 0.699);
+}
+
+.error-message {
+    background-color: rgba(238, 74, 74, 0.699);
+}
+
+.success-message {
+    background-color: rgba(99, 230, 81, 0.699);
+} */
