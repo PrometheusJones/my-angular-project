@@ -1,0 +1,90 @@
+.wraper{
+background-image: url('/assets/404-page.jpg');
+margin-top: 90px;
+height: calc(100vh - 90px);
+background-repeat: none;
+background-position: center 0px;
+background-size: cover;
+}
+
+.overlay {
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+.mainbox {
+    margin: auto;
+    width: 550px;
+    margin-top: 90px;
+    height: calc(100vh - 90px);
+    position: relative;
+    z-index: 1;
+}
+
+.err {
+    background-image: linear-gradient(to right, #c822ff, #a646ff, #8258ff, #5965ff, #1b6dff);
+    background-clip: text;
+    color: transparent;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position: absolute; 
+    left: 20%;
+    top: 8%;
+}
+
+.far {
+    position: absolute;
+    font-size: 8.5rem;
+    left: 42%;
+    top: 15%;
+    background-image: linear-gradient(to right, #c822ff, #a646ff, #8258ff, #5965ff, #1b6dff);
+    background-clip: text;
+    color: transparent;
+}
+
+.err2 {
+    background-image: linear-gradient(to right, #c822ff, #a646ff, #8258ff, #5965ff, #1b6dff);
+    background-clip: text;
+    color: transparent;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position: absolute;
+    left: 68%;
+    top: 8%;
+}
+
+.msg {
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.6rem;
+    position: absolute;
+    left: 16%;
+    top: 55%;
+    width: 75%;
+    background-image: linear-gradient(to right, #c822ff, #a646ff, #8258ff, #5965ff, #1b6dff);
+    background-clip: text;
+    color: transparent;
+}
+
+a {
+    text-decoration: none;
+    background-clip: text;
+    color: rgb(230, 164, 24);
+
+    transition: ease-in-out 300ms;
+
+}
+
+a:hover {
+    transition: ease-in-out 300ms;
+    cursor: pointer;
+    font-size: 2rem;
+   text-decoration:underline;
+    color: rgb(255, 213, 123);
+}
