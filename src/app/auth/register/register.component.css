@@ -6,7 +6,7 @@
     position: relative;
     background-image: url('/assets/404-page.jpg');
     margin-top: 90px;
-    height: calc(100vh - 90px);
+    padding-bottom: 20px;
     background-repeat: none;
     background-position: center 0px;
     background-size: cover;
@@ -75,6 +75,11 @@ button {
     color: rgb(73, 73, 255);
 }
 
+:disabled{
+    background-color: #7f709a;
+    text-shadow: none;
+    cursor: unset;
+}
 
 
 p.error {

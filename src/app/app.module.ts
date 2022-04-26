@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
@@ -11,6 +12,8 @@ import { HeaderComponent } from './core/header/header.component';
 import { MoviesModule } from './feature/movies/movies.module';
 import { PagesModule } from './feature/pages/pages.module';
 
+import { AuthService } from './auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +21,23 @@ import { PagesModule } from './feature/pages/pages.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule,
     MoviesModule,
-    AuthModule,
-    CoreModule,
-    PagesModule
+    CoreModule.forRoot(),
+    PagesModule,
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (authService: AuthService) => {
+        return () => authService.authenticate();
+      },
+      deps: [AuthService],
+      multi: true
+    }
+  ],
   bootstrap: [
     AppComponent,
     HeaderComponent,

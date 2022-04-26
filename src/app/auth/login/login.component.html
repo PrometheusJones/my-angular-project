@@ -1,1 +1,60 @@
-<p>login works!</p>
+<div class="form-wrapper">
+
+    <form class="register" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
+
+        <fieldset>
+
+            <h2>Login</h2>
+
+            <p class="input-wrapper">
+                <label for="username"><span><i class="fas fa-user"></i></span></label>
+                <input formControlName="username"
+                    [class.input-error]="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid"
+                    type="text" name="username" id="username" placeholder="Username">
+            </p>
+
+            <ng-container
+                *ngIf="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid">
+                <p class="error">
+                    Username is required!
+                </p>
+
+                <p *ngIf="registerFormGroup.controls['username'].errors" class="error">
+                    Username must be at least 5 characters!
+                </p>
+            </ng-container>
+
+
+
+
+            <div formGroupName="passwords">
+                <p class="input-wrapper">
+                    <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                    <input formControlName="password" type="password" name="password" id="password"
+                        placeholder="******">
+                </p>
+
+                <ng-container
+                    *ngIf="passwordsGroup.controls['password'].touched && passwordsGroup.controls['password'].invalid">
+                    <p *ngIf="passwordsGroup.controls['password'].errors" class="error">
+                        Password is required!
+                    </p>
+                    <p class="error">
+                        Password must be at least 5 characters!
+                    </p>
+                </ng-container>
+
+
+            </div>
+
+            <button [disabled]="registerFormGroup.invalid">Create Account</button>
+
+            <p class="text-center">
+                Don't have an account?
+                <a routerLink="/user/register">Register</a>
+            </p>
+
+        </fieldset>
+    </form>
+    <div class="form-overlay"></div>
+</div>
