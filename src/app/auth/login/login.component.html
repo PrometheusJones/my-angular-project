@@ -1,53 +1,53 @@
 <div class="form-wrapper">
 
-    <form class="register" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
+    <form class="login" [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
+
 
         <fieldset>
 
             <h2>Login</h2>
 
+            <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
             <p class="input-wrapper">
-                <label for="username"><span><i class="fas fa-user"></i></span></label>
-                <input formControlName="username"
-                    [class.input-error]="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid"
-                    type="text" name="username" id="username" placeholder="Username">
+                <label for="email"><span><i class="fas fa-user"></i></span></label>
+                <input formControlName="email"
+                    [class.input-error]="loginFormGroup.controls['email'].touched && loginFormGroup.controls['email'].invalid"
+                    type="text" name="email" id="email" placeholder="Email">
             </p>
 
-            <ng-container
-                *ngIf="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid">
+            <ng-container *ngIf="loginFormGroup.controls['email'].touched && loginFormGroup.controls['email'].invalid">
                 <p class="error">
-                    Username is required!
+                    Email is required!
                 </p>
 
-                <p *ngIf="registerFormGroup.controls['username'].errors" class="error">
-                    Username must be at least 5 characters!
+                <p *ngIf="loginFormGroup.controls['email'].errors" class="error">
+                    Email must be at least 5 characters!
                 </p>
             </ng-container>
 
 
 
 
-            <div formGroupName="passwords">
-                <p class="input-wrapper">
-                    <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                    <input formControlName="password" type="password" name="password" id="password"
-                        placeholder="******">
+
+            <p class="input-wrapper">
+                <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                <input formControlName="password" type="password" name="password" id="password" placeholder="******">
+            </p>
+
+            <ng-container
+                *ngIf="loginFormGroup.controls['password'].touched && loginFormGroup.controls['password'].invalid">
+                <p *ngIf="loginFormGroup.controls['password'].errors" class="error">
+                    Password is required!
                 </p>
-
-                <ng-container
-                    *ngIf="passwordsGroup.controls['password'].touched && passwordsGroup.controls['password'].invalid">
-                    <p *ngIf="passwordsGroup.controls['password'].errors" class="error">
-                        Password is required!
-                    </p>
-                    <p class="error">
-                        Password must be at least 5 characters!
-                    </p>
-                </ng-container>
+                <p class="error">
+                    Password must be at least 5 characters!
+                </p>
+            </ng-container>
 
 
-            </div>
 
-            <button [disabled]="registerFormGroup.invalid">Create Account</button>
+            <button [disabled]="loginFormGroup.invalid">Login</button>
 
             <p class="text-center">
                 Don't have an account?
