@@ -7,7 +7,7 @@
             </a>
             <p>Movie Coliseum</p>
         </div>
-        <div class="mini-navbar">
+        <div *ngIf="!(isLoggedIn$ | async)" class="mini-navbar">
             <ul>
                 <li>
                     <a routerLink="/user/login">Login</a>
@@ -17,13 +17,13 @@
                 </li>
             </ul>
         </div>
-        <div class="mini-navbar">
+        <div *ngIf="(isLoggedIn$ | async)" class="mini-navbar">
             <ul>
                 <li>
-                    <a routerLink="/user/profile">s Profile</a>
+                    <a routerLink="/user/profile">{{( currentUser$ | async)!.username}}'s Profile</a>
                 </li>
                 <li>
-                    <a (click)="logoutHandler()">Logout</a>
+                    <a href="javascript:void(0);" (click)="logoutHandler()">Logout</a>
                 </li>
             </ul>
         </div>
@@ -42,4 +42,8 @@
 
         </ul>
     </nav>
+    <p *ngIf="!!message" [ngClass]="{'error-message': isErrorMessage, 'success-message': !isErrorMessage}"
+        class="notification">
+        {{message}}
+    </p>
 </header>

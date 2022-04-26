@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { MessageBusService } from 'src/app/core/message-bus.service';
 import { CreateUserDto } from 'src/app/core/user.service';
 import { emailValidator, rePasswordMatch } from '../utils';
 
@@ -11,6 +12,8 @@ import { emailValidator, rePasswordMatch } from '../utils';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  errorMessage: string = '';
+
 
   passwordControl = new FormControl(null, [Validators.required, Validators.minLength(5)]);
 
@@ -33,7 +36,9 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private messageBus: MessageBusService,
+  ) { }
 
 
 
@@ -41,6 +46,8 @@ export class RegisterComponent implements OnInit {
   }
 
   handleRegister(): void {
+    this.errorMessage = '';
+
     const { username, email, passwords, tel } = this.registerFormGroup.value;
 
     const body: CreateUserDto = {
@@ -52,8 +59,13 @@ export class RegisterComponent implements OnInit {
     };
 
 
-    this.authService.register$(body).subscribe(() => {
-      this.router.navigate(['/home']);
+    this.authService.register$(body).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+      }
     });
 
 
