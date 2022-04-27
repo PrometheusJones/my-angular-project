@@ -13,10 +13,12 @@ import { MoviesModule } from './feature/movies/movies.module';
 import { PagesModule } from './feature/pages/pages.module';
 
 import { AuthService } from './auth.service';
+import { ShortenPipePipe } from './shared/shorten-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ShortenPipePipe,
   ],
   imports: [
     BrowserModule,

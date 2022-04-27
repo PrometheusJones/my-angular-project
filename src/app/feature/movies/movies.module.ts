@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { MoviesRoutingModule } from './movies-routing.module';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
+import { MoviesListItemComponent } from './movies-list-item/movies-list-item.component';
 
 
 
@@ -10,7 +11,8 @@ import { MoviesPageComponent } from './movies-page/movies-page.component';
   declarations: [
 
     MoviesListComponent,
-     MoviesPageComponent
+     MoviesPageComponent,
+     MoviesListItemComponent
   ],
   imports: [
     CommonModule,

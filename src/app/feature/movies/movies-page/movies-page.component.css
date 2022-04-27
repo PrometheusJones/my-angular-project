@@ -1,0 +1,44 @@
+.movies-page-wrapper {
+    align-items: center;
+    gap: 2rem;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position: relative;
+    margin-top: 90px;
+    min-height: calc(100vh - 90px);
+    background-image: url('/assets/movie-page-backgroing.jpg');
+    background-repeat: repeat-y;
+    background-position: center 0px;
+    background-size: cover;
+    z-index: 0;
+}
+
+
+.overlay {
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: -10;
+}
+
+.header-div {
+    text-align: center;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #d148ff, #ad56fd, #9775fd, #6c76ff, #3f82f5);
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.header-div h3, h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+app-movies-list {
+    min-height: calc(100vh - 90px);
+}
