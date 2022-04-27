@@ -19,10 +19,10 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
-  // {
-  //   path: 'themes',
-  //   loadChildren: () => import('./feature/themes/themes.module').then(m => m.ThemesModule)
-  // },
+  {
+    path: 'movies',
+    loadChildren: () => import('./feature/movies/movies.module').then(m => m.MoviesModule)
+  },
   {
     path: '**',
     component: PageNotFoundPageComponent
