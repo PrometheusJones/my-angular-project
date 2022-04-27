@@ -39,6 +39,8 @@ h2 {
 form.login {
     display: flex;
     width: 60%;
+    height: 80vh;
+    align-content: center;
     justify-content: center;
     text-align: center;
     z-index: 10;

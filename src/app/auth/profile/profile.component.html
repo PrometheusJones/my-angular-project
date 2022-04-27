@@ -1,0 +1,58 @@
+<div class="form-wrapper">
+
+    <div class="profile"><img src="/assets/profile.png" alt="default user photo">
+        <h3>Your Profile Info</h3>
+
+        <ng-container *ngIf="!!currentUser">
+            <ng-container *ngIf="!(isInEditMode)">
+                <div class="flex">
+                    <p>Username: </p>
+                    <p>{{currentUser.username}}</p>
+                </div>
+                <div class="flex">
+                    <p>Email: </p>
+                    <p>{{currentUser.email}}</p>
+                </div>
+                <div class="flex">
+                    <p>Phone: </p>
+                    <p>{{currentUser.tel}}</p>
+                </div>
+
+                <button (click)="enterEditMode(currentUser)" class="edit-button">Edit</button>
+            </ng-container>
+
+            <ng-container *ngIf="isInEditMode">
+                <form #editProfileForm="ngForm" (ngSubmit)="updateProfile()">
+                    <div class="flex">
+                        <p>Username: </p>
+                        <input type="text" name="username" #username="ngModel" ngModel required minlength="5"
+                            id="username">
+                    </div>
+                    <ng-container *ngIf="username.touched && username.invalid">
+                        <p class="error-text" *ngIf="username.errors?.['minlength']" class="error-text">Username must be
+                            more than 4!</p>
+                        <p class="error-text" *ngIf="username.errors?.['required']" class="error-text">Username is
+                            required!</p>
+                    </ng-container>
+                    <div class="flex">
+                        <p>Email: </p>
+                        <input #email="ngModel" [class.input-error]="email.touched && email.invalid" type="email"
+                            name="email" id="email" ngModel required emailValidator>
+                    </div>
+                    <ng-container *ngIf="email.touched && email.invalid">
+                        <p *ngIf="email.errors?.['required']" class="error-text">Email required!</p>
+                        <p *ngIf="email.errors!['email']" class="error-text">Email invalid!</p>
+                    </ng-container>
+                    <div class="flex">
+                        <p>Phone: </p>
+                        <input ngModel type="text" name="tel" id="tel">
+                    </div>
+                    <button type="button" (click)="isInEditMode=false" class="red-button">Cancel</button>
+                    <button [disabled]="editProfileForm.invalid" class="green-button">Save</button>
+                </form>
+            </ng-container>
+        </ng-container>
+    </div>
+
+    <div class="form-overlay"></div>
+</div>

@@ -17,12 +17,12 @@
             </p>
 
             <ng-container *ngIf="loginFormGroup.controls['email'].touched && loginFormGroup.controls['email'].invalid">
-                <p class="error">
+                <p *ngIf="loginFormGroup.controls['email'].errors?.['required']" class="error">
                     Email is required!
                 </p>
 
-                <p *ngIf="loginFormGroup.controls['email'].errors" class="error">
-                    Email must be at least 5 characters!
+                <p *ngIf="loginFormGroup.controls['email'].errors?.['email']" class="error">
+                    Email is invalid!
                 </p>
             </ng-container>
 
@@ -37,10 +37,10 @@
 
             <ng-container
                 *ngIf="loginFormGroup.controls['password'].touched && loginFormGroup.controls['password'].invalid">
-                <p *ngIf="loginFormGroup.controls['password'].errors" class="error">
+                <p *ngIf="loginFormGroup.controls['password'].errors?.['required']" class="error">
                     Password is required!
                 </p>
-                <p class="error">
+                <p *ngIf="loginFormGroup.controls['password'].errors?.['minlength']" class="error">
                     Password must be at least 5 characters!
                 </p>
             </ng-container>
