@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IMovie } from 'src/app/core/interfaces/movie';
 
 @Component({
   selector: 'app-movies-list-item',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesListItemComponent implements OnInit {
 
+  @Input() movie: IMovie;
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -1,54 +1,9 @@
 <div class="card">
-    <img class="image" src="assets/movie-wellcome-overlay.jpg" alt="asd">
+    <img class="image" [src]="movie.imgUrl ? movie.imgUrl : ['/assets/NoImageFound.png']" alt="asd">
     <section class="info-section">
-        <h3 class="name">Card Title</h3>
+        <h3 class="name">{{movie.movieName | shorten:22}}</h3>
         <p class="info">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima consequuntur possimus quo
-            enim
-            eveniet,
-            deserunt ducimus doloremque laudantium iure, ut inventore eaque fugit ex porro totam
-            perspiciatis
-            molestiae corporis. Odio!
-        </p>
-    </section>
-    <section class="button-section">
-        <button>More info</button>
-        <button><i class="fas fa-thumbs-up"></i></button>
-        <button><i class="fas fa-thumbs-down"></i></button>
-    </section>
-</div>
-
-<div class="card">
-    <img class="image" src="./images/Image1.jpg" alt="asd">
-    <section class="info-section">
-        <h3 class="name">Card Title</h3>
-        <p class="info">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima consequuntur possimus quo
-            enim
-            eveniet,
-            deserunt ducimus doloremque laudantium iure, ut inventore eaque fugit ex porro totam
-            perspiciatis
-            molestiae corporis. Odio!
-        </p>
-    </section>
-    <section class="button-section">
-        <button>More info</button>
-        <button><i class="fas fa-thumbs-up"></i></button>
-        <button><i class="fas fa-thumbs-down"></i></button>
-    </section>
-</div>
-
-<div class="card">
-    <img class="image" src="./images/Image1.jpg" alt="asd">
-    <section class="info-section">
-        <h3 class="name">Card Title</h3>
-        <p class="info">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima consequuntur possimus quo
-            enim
-            eveniet,
-            deserunt ducimus doloremque laudantium iure, ut inventore eaque fugit ex porro totam
-            perspiciatis
-            molestiae corporis. Odio!
+            {{movie.movieDescription | shorten:120}}
         </p>
     </section>
     <section class="button-section">

@@ -1,0 +1,94 @@
+<div class="form-page-wrapper">
+
+    <h2>Create a movie</h2>
+
+    <form #newMovieForm="ngForm" (ngSubmit)="submitNewMovie(newMovieForm)">
+        <div class="form-element">
+            <label for="movieName">Movie name<span class="red">*</span></label>
+            <input #movieName="ngModel" [class.input-error]="movieName.touched && movieName.invalid" type="text"
+                name="movieName" ngModel id="movieName" required minlength="2">
+            <ng-container *ngIf="movieName.touched && movieName.invalid">
+                <p *ngIf="movieName.errors?.['required']" class="error">
+                    The field is required.
+                </p>
+                <p *ngIf="movieName.errors?.['minlength']" class="error">
+                    Name shoud be atleast 2 characters.
+                </p>
+            </ng-container>
+        </div>
+
+        <div class="double">
+            <div class="form-element director">
+                <label for="director">Director<span class="red">*</span></label>
+                <input #director="ngModel" [class.input-error]="director.touched && director.invalid" type="text"
+                    name="director" ngModel id="director" required minlength="5">
+                <ng-container *ngIf="director.touched && director.invalid">
+                    <p *ngIf="director.errors?.['required']" class="error">
+                        The feald is required.
+                    </p>
+                    <p *ngIf="director.errors?.['minlength']" class="error">
+                        Director name must be atleast 5 characters.
+                    </p>
+                </ng-container>
+            </div>
+            <div class="form-element select">
+                <label for="genre">Genre<span class="red">*</span></label>
+                <select #genre="ngModel" ngModel name="genre" required id="genre">
+                    <option value="Horror">Dorror</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Action">Action</option>
+                    <option value="SciFi">SciFi</option>
+                    <option value="Fantasy">Fantasy</option>
+
+                </select>
+
+
+                <ng-container *ngIf="genre.touched && genre.invalid">
+                    <p *ngIf="genre.errors?.['required']" class="error">
+                        Genre is required.
+                    </p>
+                </ng-container>
+            </div>
+            <div class="form-element duration">
+                <label for="duration">Duration<span class="red">*</span></label>
+                <input #duration="ngModel" [class.input-error]="duration.touched && duration.invalid" min="0"
+                    placeholder="in minutes" type="number" name="duration" ngModel id="duration" required>
+                <ng-container *ngIf="duration.touched && duration.invalid">
+                    <p *ngIf="duration.errors?.['required']" class="error">
+                        Write the movie duration.
+                    </p>
+                    <p *ngIf="duration.errors?.['min']" class="error">
+                        Duration must be a positive number.
+                    </p>
+
+                </ng-container>
+            </div>
+        </div>
+
+
+        <div class="form-element">
+            <label for="movieDescription">Description <span class="red">*</span></label>
+            <textarea #movieDescription="ngModel" type="text" name="movieDescription" ngModel id="movieDescription"
+                rows="8" class="height" required minlength="10"></textarea>
+
+            <ng-container *ngIf="movieDescription.touched && movieDescription.invalid">
+                <p *ngIf="movieDescription.errors?.['required']" class="error">
+                    Полето е задължително.
+                </p>
+                <p *ngIf="movieDescription.errors?.['minlength']" class="error">
+                    Текста трябва да е поне 10 символа
+                </p>
+            </ng-container>
+        </div>
+
+
+        <div class="form-element">
+            <button type="button" (click)="navigateToMovies()" class="cancel">Отказ</button>
+            <button [disabled]="newMovieForm.invalid" [class.disabled]="newMovieForm.invalid"
+                class="public">Запис</button>
+        </div>
+    </form>
+    <div class="overlay"></div>
+</div>

@@ -1,3 +1,11 @@
 <div class="movies-container">
-    <app-movies-list-item></app-movies-list-item>
+    <!-- <form>
+        <input [formControl]="searchControl" type="text" placeholder="Search for posts">
+    </form> -->
+    <ng-container *ngIf="movieList">
+        <app-movies-list-item *ngFor="let movie of movieList" [movie]="movie"></app-movies-list-item>
+    </ng-container>
+    <div *ngIf="!movieList">
+        Loading...
+    </div>
 </div>
