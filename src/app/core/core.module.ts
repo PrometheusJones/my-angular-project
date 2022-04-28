@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './user.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthUserInterceptor } from './auth-user.interceptor';
+import { MovieService } from './movie.service';
+import { MoviesModule } from '../feature/movies/movies.module';
 
 
 
@@ -16,11 +18,12 @@ import { AuthUserInterceptor } from './auth-user.interceptor';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MoviesModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class CoreModule {

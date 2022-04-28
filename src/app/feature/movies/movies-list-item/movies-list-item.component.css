@@ -1,22 +1,16 @@
-:host {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
-}
+
 
 div.card {
     border: 2px solid #c9c9c9;
-    box-shadow: 0px 0px 7px 6px #9C9C9C;
+    box-shadow: 0px 0px 5px 3px #9C9C9C;
     border-radius: 10px;
     overflow: hidden;
 
-    width: 27vw;
+    width: 25vw;
     padding-bottom: 10px;
 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     line-height: 1.5rem;
     font-weight: lighter;
@@ -28,17 +22,13 @@ div.card img {
 }
 
 div.card section {
-    padding: 15px 30px;
-}
-
-div.card footer {
-    border-top: 2px solid #c9c9c9;
-    padding: 20px;
+    padding: 10px 25px;
 }
 
 .button-section {
     display: flex;
     justify-content: space-between;
+    margin-top: 0;
 }
 
 .thumbs-up,
@@ -46,7 +36,7 @@ div.card footer {
 .favorite {
     background: none;
     border: none;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .thumbs-up{

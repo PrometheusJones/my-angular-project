@@ -13,12 +13,11 @@ import { MoviesModule } from './feature/movies/movies.module';
 import { PagesModule } from './feature/pages/pages.module';
 
 import { AuthService } from './auth.service';
-import { ShortenPipePipe } from './shared/shorten-pipe.pipe';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShortenPipePipe,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +27,6 @@ import { ShortenPipePipe } from './shared/shorten-pipe.pipe';
     MoviesModule,
     CoreModule.forRoot(),
     PagesModule,
-
   ],
   providers: [
     {
