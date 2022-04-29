@@ -11,7 +11,7 @@
                 <div class="img-wrapper">
                     <img [src]=movie.imgUrl alt="">
                 </div>
-                
+
                 <div class="subscribers">
                     <ng-container *ngIf="(isLoggedIn$ | async)">
                         <button class="favorite" (click)="handleSubscription()">
@@ -21,7 +21,8 @@
                             <p *ngIf="!canSubscribe">Unsubscribe</p>
                         </button>
                         <ng-container *ngIf="(currentUser$ |async)!._id == movie.userId + ''">
-                            <button class="btn-edit" routerLink="">Edit</button>
+                            <button class="btn-edit" [routerLink]="['/movies',movie._id,'edit']">Edit</button>
+                            <button class="btn-delete" (click)="deleteHandler()">Delete</button>
                         </ng-container>
                     </ng-container>
                     <!-- <button *ngIf="(isLoggedIn$ | async) && canLike(movie.posts)" class="thumbs-up"><i
@@ -66,18 +67,16 @@
         </div>
 
         <div *ngIf="(isLoggedIn$ | async)" class="answer-comment">
-            <p><span>currentUser</span> comment:</p>
+            <p><span>{{(currentUser$ |async)!.username}}</span> comment:</p>
             <div class="answer">
-                <form>
-                    <textarea name="postText" id="comment" cols="30" rows="10"></textarea>
+                <form #commentForm="ngForm" (ngSubmit)="submitNewComment(commentForm)">
+                    <textarea name="postText" #comment="ngModel" ngModel id="comment" cols="30" rows="10"></textarea>
                     <button>Post</button>
                 </form>
             </div>
         </div>
 
     </div>
-
-    <!-- <a routerLink="/movies/5fa64a9f2183ce1728ff371a">Angular 10</a> -->
 
     <ng-template #loadingIndicator>
         Loading...

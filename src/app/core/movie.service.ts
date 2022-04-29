@@ -27,6 +27,16 @@ export class MovieService {
     return this.http.post<IMovie>(`${apiUrl}/movies`, body, { withCredentials: true });
   }
 
+  editMovie$(body: CreateMovieDto, movieId: string): Observable<IMovie> {
+    console.log(body);
+
+    return this.http.patch<IMovie>(`${apiUrl}/movies/${movieId}`, { ...body }, { withCredentials: true });
+  }
+  deleteMovie$(movieId: string): any {
+
+    return this.http.delete(`${apiUrl}/movies/${movieId}`, { withCredentials: true });
+  }
+
   loadMovieList(searchTerm: string = ''): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${apiUrl}/movies?title=${searchTerm}`, {
       params: new HttpParams({
@@ -34,6 +44,10 @@ export class MovieService {
         }
       })
     });
+  }
+
+  addMovieComment(text: string, id: string) {
+    return this.http.put(`${apiUrl}/movies/${id}/comment`, { text }, { withCredentials: true })
   }
 
   loadMovieById(id: string): Observable<IMovie> {

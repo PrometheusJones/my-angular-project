@@ -64,6 +64,7 @@ export class HeaderComponent implements OnInit {
       error: (err) => {
         this.isLoggingOut = false;
         this.messageBus.notifyForMessage({ text: err.error.message, type: MessageType.Error })
+        console.log(err);
 
       }
     });

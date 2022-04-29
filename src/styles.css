@@ -16,9 +16,12 @@ button {
     font-family: Tahoma, sans-serif, cursive;
     transition: ease-in-out 300ms;
     cursor: pointer;
+
 }
 
 button:hover {
     transition: ease-out 250ms;
     text-shadow: 1.5px 1.5px 5px #6fd3fa;
+    box-shadow: 1px 1px 4px white;
+
 }

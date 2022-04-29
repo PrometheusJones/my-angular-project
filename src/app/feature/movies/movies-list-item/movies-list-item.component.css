@@ -1,14 +1,12 @@
-
-
 div.card {
     border: 2px solid #c9c9c9;
     box-shadow: 0px 0px 5px 3px #9C9C9C;
     border-radius: 10px;
     overflow: hidden;
+    
 
     width: 25vw;
     padding-bottom: 10px;
-
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 14px;
     color: white;
@@ -18,7 +16,7 @@ div.card {
 
 div.card img {
     width: 100%;
-    object-fit: fill;
+    object-fit: contain;
 }
 
 div.card section {
@@ -39,13 +37,14 @@ div.card section {
     font-size: 20px;
 }
 
-.thumbs-up{
+.thumbs-up {
     color: rgb(0, 255, 0);
 }
-.thumbs-down{
+
+.thumbs-down {
     color: rgb(255, 0, 0);
 }
 
-.favorite{
+.favorite {
     color: gold;
 }

@@ -1,8 +1,8 @@
 <div class="form-page-wrapper">
 
-    <h2>Create a movie</h2>
+    <h2>Edit your movie</h2>
 
-    <form #newMovieForm="ngForm" (ngSubmit)="submitNewMovie(newMovieForm)">
+    <form #editMovieForm="ngForm" (ngSubmit)="editMovie(editMovieForm,movie)">
         <div class="form-element">
             <label for="movieName">Movie name<span class="red">*</span></label>
             <input #movieName="ngModel" [class.input-error]="movieName.touched && movieName.invalid" type="text"
@@ -53,8 +53,8 @@
             </div>
             <div class="form-element releseDate">
                 <label for="releseDate">Relese Date</label>
-                <input #releseDate="ngModel" [class.input-error]="releseDate.touched && releseDate.invalid" type="date" 
-                    name="releseDate" ngModel id="releseDate">
+                <input #releseDate="ngModel" [value]="" [class.input-error]="releseDate.touched && releseDate.invalid"
+                    type="date" name="releseDate" ngModel id="releseDate">
 
             </div>
             <div class="form-element duration">
@@ -89,15 +89,15 @@
                     Description is required.
                 </p>
                 <p *ngIf="movieDescription.errors?.['minlength']" class="error">
-                   The description has to be more than 10 characters.
+                    The description has to be more than 10 characters.
                 </p>
             </ng-container>
         </div>
 
 
         <div class="form-element">
-            <button type="button" (click)="navigateToMovies()" class="cancel">Отказ</button>
-            <button [disabled]="newMovieForm.invalid" [class.disabled]="newMovieForm.invalid"
+            <button type="button" (click)="navigateToMovie()" class="cancel">Отказ</button>
+            <button [disabled]="editMovieForm.invalid" [class.disabled]="editMovieForm.invalid"
                 class="public">Запис</button>
         </div>
     </form>

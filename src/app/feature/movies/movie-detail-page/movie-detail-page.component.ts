@@ -1,10 +1,11 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { IUser } from 'src/app/core/interfaces';
 import { IMovie } from 'src/app/core/interfaces/movie';
-import { MessageType } from 'src/app/core/message-bus.service';
+import { MessageBusService, MessageType } from 'src/app/core/message-bus.service';
 import { MovieService } from 'src/app/core/movie.service';
 import { UserService } from 'src/app/core/user.service';
 
@@ -26,7 +27,8 @@ export class MovieDetailPageComponent implements OnInit, OnChanges {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private movieService: MovieService,
-    private router: Router
+    private router: Router,
+    private messageBusService: MessageBusService
   ) { }
 
   ngOnInit(): void {
@@ -35,21 +37,46 @@ export class MovieDetailPageComponent implements OnInit, OnChanges {
     this.movieService.loadMovieById(movieId).subscribe(movie => {
       this.movie = movie;
 
-      this.currentUser$.subscribe(user => {
-        this.userId = user!._id;
-        this.canSubscribe = !this.movie.subscribers.includes(this.userId);
-      });
+      this.isLoggedIn$.subscribe(isLogged => {
+        if (isLogged) {
+          this.currentUser$.subscribe({
+            next: user => {
+              this.userId = user!._id;
+              this.canSubscribe = !this.movie.subscribers.includes(this.userId);
+            }
+          });
+        }
+      })
+
+
     });
 
   }
 
 
   ngOnChanges(): void {
-    // TODO : use currentUser$!
     this.currentUser$.subscribe(user => {
       this.userId = user!._id;
     });
     this.canSubscribe = !this.movie.subscribers.includes(this.userId);
+  }
+
+  deleteHandler(): void {
+    const movieId = this.activatedRoute.snapshot.params['movieId'];
+    if (window.confirm('Are you shure you want to delete this movie!')) {
+      this.movieService.deleteMovie$(movieId).subscribe({
+        next: () => {
+          this.router.navigate(['/movies']);
+          this.messageBusService.notifyForMessage({ text: 'Movie deleted!', type: MessageType.Success })
+        }
+      })
+
+    }
+
+  }
+
+  submitNewComment(commentForm: NgForm) {
+
   }
 
   handleSubscribe(movie: IMovie): void {

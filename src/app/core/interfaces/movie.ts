@@ -11,4 +11,5 @@ export interface IMovie<T = string> extends IBase {
     movieDescription: string;
     imgUrl?: string;
     releseDate?: Date;
+    genre: string;
 }

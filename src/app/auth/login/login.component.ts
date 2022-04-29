@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin(): void {
-    console.log(this.loginFormGroup.value);
 
     this.errorMessage = '';
 
@@ -44,9 +43,7 @@ export class LoginComponent implements OnInit {
 
         this.messageBus.notifyForMessage({ text: 'Logged in successfully!', type: MessageType.Success });
       },
-      // complete: () => {
-      //   console.log('login stream completed');
-      // },
+
       error: (err) => {
         this.errorMessage = err.error.message;
         this.messageBus.notifyForMessage({ text: this.errorMessage, type: MessageType.Error });
