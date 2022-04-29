@@ -38,6 +38,8 @@ export class MoviesNewPageComponent implements OnInit {
         director: formData.director,
         duration: formData.duration,
         genre: formData.genre,
+        releseDate: formData.releseDate,
+        imgUrl: formData.imgUrl,
       }
 
 

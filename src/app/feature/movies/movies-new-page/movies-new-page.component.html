@@ -51,6 +51,12 @@
                     </p>
                 </ng-container>
             </div>
+            <div class="form-element releseDate">
+                <label for="releseDate">Relese Date</label>
+                <input #releseDate="ngModel" [class.input-error]="releseDate.touched && releseDate.invalid" type="date" 
+                    name="releseDate" ngModel id="releseDate">
+
+            </div>
             <div class="form-element duration">
                 <label for="duration">Duration<span class="red">*</span></label>
                 <input #duration="ngModel" [class.input-error]="duration.touched && duration.invalid" min="0"
@@ -67,6 +73,11 @@
             </div>
         </div>
 
+        <div class="form-element imgUrl">
+            <label for="imgUrl">Image Url</label>
+            <input #imgUrl="ngModel" [class.input-error]="imgUrl.touched && imgUrl.invalid" type="text" name="imgUrl"
+                ngModel id="imgUrl">
+        </div>
 
         <div class="form-element">
             <label for="movieDescription">Description <span class="red">*</span></label>

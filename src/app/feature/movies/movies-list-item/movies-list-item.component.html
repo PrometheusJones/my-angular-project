@@ -7,9 +7,12 @@
         </p>
     </section>
     <section class="button-section">
-        <button>More info</button>
-        <button class="thumbs-up"><i class="fas fa-thumbs-up"></i></button>
-        <button class="thumbs-down"><i class="fas fa-thumbs-down"></i></button>
+        <button [routerLink]="['/movies', movie._id]">More info</button>
+        <!-- <button *ngIf="(isLoggedIn$ | async) && canLike(movie.posts)" class="thumbs-up"><i
+                class="fas fa-thumbs-up"></i></button>
+        <button *ngIf="(isLoggedIn$ | async) && !canLike(comment)" class="thumbs-down"><i
+                class="fas fa-thumbs-down"></i></button>
+        <p><span>{{comment.likes.length}}</span> likes</p> -->
         <button class="favorite"><i class="fas fa-star"></i></button>
     </section>
 </div>

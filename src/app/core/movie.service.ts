@@ -12,6 +12,8 @@ export interface CreateMovieDto {
   director: string,
   genre: string,
   movieDescription: string,
+  releseDate: Date,
+  imgUrl: string,
 }
 
 @Injectable({
@@ -37,6 +39,15 @@ export class MovieService {
   loadMovieById(id: string): Observable<IMovie> {
     return this.http.get<IMovie>(`${apiUrl}/movies/${id}`);
   }
+
+  subscribeMovie(id: string): Observable<IMovie> {
+    return this.http.put<IMovie>(`${apiUrl}/movies/${id}/subscribe`, {}, { withCredentials: true });
+  }
+
+  unsubscribeMovie(id: string): Observable<IMovie> {
+    return this.http.put<IMovie>(`${apiUrl}/movies/${id}/unsubscribe`, {}, { withCredentials: true });
+  }
+
 
   // loadThemeById(id: string): Observable<IMovie<IPost>> {
   //   return this.http.get<IMovie<IPost>>(`${apiUrl}/themes/${id}`);

@@ -7,6 +7,7 @@ import { MoviesListItemComponent } from './movies-list-item/movies-list-item.com
 import { MoviesNewPageComponent } from './movies-new-page/movies-new-page.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MovieDetailPageComponent } from './movie-detail-page/movie-detail-page.component';
 
 
 
@@ -15,7 +16,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MoviesListComponent,
     MoviesPageComponent,
     MoviesListItemComponent,
-    MoviesNewPageComponent
+    MoviesNewPageComponent,
+    MovieDetailPageComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,86 @@
+<div class="form-page-wrapper">
+
+    <div *ngIf="!!movie; else loadingIndicator" class="movie-content">
+        <div class="movie-title">
+            <div class="movie-name-wrapper">
+                <div class="movie-name">
+                    <p>Relese Date: <time> {{movie.releseDate | date:"dd/MM/yyyy"}}</time></p>
+                    <h2>{{ movie.movieName}}</h2>
+                    <p>Subscribers: <span>{{movie.subscribers.length}}</span></p>
+                </div>
+                <div class="img-wrapper">
+                    <img [src]=movie.imgUrl alt="">
+                </div>
+                
+                <div class="subscribers">
+                    <ng-container *ngIf="(isLoggedIn$ | async)">
+                        <button class="favorite" (click)="handleSubscription()">
+                            <i [class.subscribe]="canSubscribe" [class.unsubscribe]="!canSubscribe" class="fas fa-star">
+                            </i>
+                            <p *ngIf="canSubscribe">Subscribe</p>
+                            <p *ngIf="!canSubscribe">Unsubscribe</p>
+                        </button>
+                        <ng-container *ngIf="(currentUser$ |async)!._id == movie.userId + ''">
+                            <button class="btn-edit" routerLink="">Edit</button>
+                        </ng-container>
+                    </ng-container>
+                    <!-- <button *ngIf="(isLoggedIn$ | async) && canLike(movie.posts)" class="thumbs-up"><i
+                class="fas fa-thumbs-up"></i></button>
+        <button *ngIf="(isLoggedIn$ | async) && !canLike(comment)" class="thumbs-down"><i
+                class="fas fa-thumbs-down"></i></button>
+        <p><span>{{comment.likes.length}}</span> likes</p> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="movie-info">
+            <div class="movie-info-wrapper">
+                <p>Director: {{movie.director}}</p>
+                <p>Duration: {{movie.duration}} minutes.</p>
+            </div>
+            <div class="movie-info-description-wrapper">
+                <h4>Description:</h4>
+                <p class="movie-description">
+                    {{movie.movieDescription}}
+                </p>
+            </div>
+        </div>
+
+        <div class="comment" *ngFor="let comment of movie.posts">
+            <header class="header">
+                <!-- <p><span>{{comment..username}}</span> posted on <time>{{comment.created_at | date:'short'}}</time></p> -->
+            </header>
+            <div class="comment-main">
+                <div class="userdetails">
+                    <img src="/assets/profile.png" alt="avatar">
+                </div>
+                <div class="post-content">
+                    <p>{{comment}}</p>
+                </div>
+            </div>
+            <div class="footer">
+                <i *ngIf="(isLoggedIn$ | async) && canLike(comment)" class="fas fa-thumbs-up"></i>
+                <i *ngIf="(isLoggedIn$ | async) && !canLike(comment)" class="fas fa-thumbs-down"></i>
+                <!-- <p><span>{{comment.likes.length}}</span> likes</p> -->
+            </div>
+        </div>
+
+        <div *ngIf="(isLoggedIn$ | async)" class="answer-comment">
+            <p><span>currentUser</span> comment:</p>
+            <div class="answer">
+                <form>
+                    <textarea name="postText" id="comment" cols="30" rows="10"></textarea>
+                    <button>Post</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <a routerLink="/movies/5fa64a9f2183ce1728ff371a">Angular 10</a> -->
+
+    <ng-template #loadingIndicator>
+        Loading...
+    </ng-template>
+    <div class="overlay"></div>
+</div>
