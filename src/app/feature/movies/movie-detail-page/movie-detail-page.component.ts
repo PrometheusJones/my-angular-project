@@ -62,8 +62,8 @@ export class MovieDetailPageComponent implements OnInit, OnChanges {
               this.canLike.next(false)
             }
           })
-        })
         }
+      })
 
 
     });
