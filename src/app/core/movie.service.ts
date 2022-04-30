@@ -46,8 +46,8 @@ export class MovieService {
     });
   }
 
-  addMovieComment(text: string, id: string) {
-    return this.http.put(`${apiUrl}/movies/${id}/comment`, { text }, { withCredentials: true })
+  addMovieComment(commentText: string, id: string) {
+    return this.http.post(`${apiUrl}/movies/${id}`, { commentText }, { withCredentials: true })
   }
 
   loadMovieById(id: string): Observable<IMovie> {
